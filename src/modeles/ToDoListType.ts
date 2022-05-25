@@ -4,9 +4,9 @@ export type todoList = {
     done:boolean,
      }
 
-
-     type todo = {
-      id:number,
-      title:string,
-      done:boolean,
-       }
+     export type List = {
+        id:number,
+        title:string,
+        done:boolean,
+         }
+    
