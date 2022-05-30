@@ -4,4 +4,11 @@ export type todoList = {
     done:boolean,
      }
 
+
+     export type List = {
+        id:number,
+        title:string,
+        done:boolean,
+         }
+
     
