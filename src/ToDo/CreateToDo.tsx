@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 
-type CreateToDoProps={
+type CreateToDoProps = {
 onSave:(inputValue:string) => void,
 changeToDoForm:() => void,
 }
 
 const CreateToDo:FC<CreateToDoProps> = ({onSave,changeToDoForm}) => {
-   const [inputValue, updateInputValue]=React.useState('');
+   const [inputValue, updateInputValue]=useState('');
   const inputChange= (event:any) => {
     updateInputValue(event.target.value);
    }

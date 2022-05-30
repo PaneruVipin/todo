@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import {ChangeEventHandler, FC} from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { todoList } from '../modeles/ToDoListType'
 import { TODO_STATUS_CHANGE } from '../TSFiles/ActionConst'
@@ -12,13 +12,13 @@ type ThingListProps={
 
 const TodoList:FC<ThingListProps> = ({todo}) =>{
     const dispatch=useDispatch()
-    const onCheck=()=>{
-       dispatch({type:TODO_STATUS_CHANGE});
-    }
+    const onCheck=(id:number)=>{
+       dispatch({type:TODO_STATUS_CHANGE, payload:id});
+    } 
     return(
         <div>
             {
-               todo.map((e)=><TodoRow id={e.id} name={e.title} key={e.id} done={e.done} onCheck={onCheck}/>) 
+               todo.map((e)=><TodoRow todo={e}  key={e.id} onDelete={()=>{}} onCheck={onCheck}/>) 
             }
         </div>
     )

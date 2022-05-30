@@ -5,10 +5,4 @@ export type todoList = {
      }
 
 
-     export type List = {
-        id:number,
-        title:string,
-        done:boolean,
-         }
-
     
