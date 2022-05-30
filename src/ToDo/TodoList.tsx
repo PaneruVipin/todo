@@ -9,7 +9,6 @@ import TodoRow from './TodoRow'
 type ThingListProps={
     todo:todoList[]
 }
-
 const TodoList:FC<ThingListProps> = ({todo}) =>{
     const dispatch=useDispatch()
     const onCheck=(id:number)=>{
@@ -23,16 +22,7 @@ const TodoList:FC<ThingListProps> = ({todo}) =>{
         </div>
     )
 }
-
-export default TodoList;
-
-const incompleteMapper= (s:State) => {
-    return { todo: incompleteTodoSelector(s)}
-}
-
-const completeMapper= (s:State) => {
-    return { todo: completeTodoSelector(s)}
-}
-
+const incompleteMapper= (s:State) => ({ todo: incompleteTodoSelector(s)})
+const completeMapper= (s:State) => ({ todo: completeTodoSelector(s)})
 export const IncompletedTodoList=connect(incompleteMapper)(TodoList)
 export const CompletedTodoList=connect(completeMapper)(TodoList)
