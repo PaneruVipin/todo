@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from 'react';
+import { ChangeEventHandler, FC } from 'react';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import Input from './Input';
 import cn from 'classnames';
@@ -7,7 +7,7 @@ import { todoList } from '../modeles/ToDoListType';
 
 type ThingsRowProps = {
    todo:todoList,
-   onCheck: ((id: number) => void) 
+   onCheck: (id: number) => void,
    onDelete: () => void
   } 
 

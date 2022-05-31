@@ -1,28 +1,30 @@
 import {ChangeEventHandler, FC} from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { todoList } from '../modeles/ToDoListType'
-import { TODO_STATUS_CHANGE } from '../TSFiles/ActionConst'
+import { statusChangeActionCreator, TODO_STATUS_CHANGE } from '../TSFiles/Actions'
 import { completeTodoSelector, incompleteTodoSelector } from '../TSFiles/Selector'
-import { State } from '../TSFiles/Store'
+import { State } from '../TSFiles/Store' 
 import TodoRow from './TodoRow'
 
 type ThingListProps={
-    todo:todoList[]
+    todo:todoList[],
+    onStatusChange:(id:number)=>void
 }
-const TodoList:FC<ThingListProps> = ({todo}) =>{
-    const dispatch=useDispatch()
-    const onCheck=(id:number)=>{
-       dispatch({type:TODO_STATUS_CHANGE, payload:id});
-    } 
+const TodoList:FC<ThingListProps> = ({todo,onStatusChange}) =>{
+   
     return(
         <div>
             {
-               todo.map((e)=><TodoRow todo={e}  key={e.id} onDelete={()=>{}} onCheck={onCheck}/>) 
+               todo.map((e)=><TodoRow todo={e}  key={e.id} onDelete={()=>{}} onCheck={onStatusChange}/>) 
             }
         </div>
     )
 }
 const incompleteMapper= (s:State) => ({ todo: incompleteTodoSelector(s)})
 const completeMapper= (s:State) => ({ todo: completeTodoSelector(s)})
-export const IncompletedTodoList=connect(incompleteMapper)(TodoList)
-export const CompletedTodoList=connect(completeMapper)(TodoList)
+const dispatchMapper = {
+    onStatusChange:statusChangeActionCreator
+}
+
+export const IncompletedTodoList=connect(incompleteMapper,dispatchMapper)(TodoList)
+export const CompletedTodoList=connect(completeMapper, dispatchMapper)(TodoList)

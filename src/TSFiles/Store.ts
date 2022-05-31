@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createStore, Reducer } from "redux";
 import { todoList } from "../modeles/ToDoListType";
-import { TODO_ADDED, TODO_STATUS_CHANGE } from "./ActionConst";
+import { TODO_ADDED, TODO_STATUS_CHANGE } from "./Actions";
  
 export type State={
     todos:todoList[]
