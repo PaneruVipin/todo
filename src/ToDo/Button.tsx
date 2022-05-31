@@ -10,11 +10,10 @@ const Button:FC<ButtonProps> = ({theme,children,...rest}) => {
  return(
     <button  
     {...rest}
-    className={cn('block border   px-2 font-bold text-2xl shadow-md  rounded-md',
+    className={cn('block border   px-2 font-medium text-xl shadow-md  rounded-md',
     {'bg-indigo-500 hover:bg-yellow-500 text-white border-indigo-500 ':theme==='primary'},
     {'bg-white border-gray-300 text-black hover:bg-yellow-500':theme==='secondry'},
-    {'w-4 h-4 border-gray-400':theme==='fixedSize'},
-    {'w-4 h-4 bg-yellow-500 text-white border-yellow-500':theme==='fixedSizeYellow'}
+    {'w-4 h-4 border-gray-400':theme==='fixedSize'}
     )}>{children}</button>
   );
 }

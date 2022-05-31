@@ -8,7 +8,7 @@ import { todoList } from '../modeles/ToDoListType';
 type ThingsRowProps = {
    todo:todoList,
    onCheck: (id: number) => void,
-   onDelete: () => void
+   onDelete: (id:number) => void
   } 
 
 const TodoRow:FC<ThingsRowProps> = ({todo, onDelete, onCheck}) => { 
@@ -16,11 +16,14 @@ const TodoRow:FC<ThingsRowProps> = ({todo, onDelete, onCheck}) => {
   const onStatusChange = ()=>{
     onCheck(id)
   }
+  const onDeleteClick= () =>{
+    onDelete(id)
+  }
 return (
     <div className='space-x-2 flex items-center'>
    <Input  type='checkbox' checked={done} onChange={onStatusChange} />
      <div className={cn('', {'line-through':done})}>{title}</div>
-      <RiDeleteBin6Fill onClick={onDelete}/>
+      <RiDeleteBin6Fill onClick={onDeleteClick}/>
     </div>
   );
 }
