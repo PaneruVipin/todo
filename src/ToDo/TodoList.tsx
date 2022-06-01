@@ -8,7 +8,7 @@ import TodoRow from './TodoRow'
 
 type ThingListProps={
     todo:todoList[],
-    onStatusChange:(id:number)=>void,
+    onStatusChange:(id:number, done:boolean)=>void,
     onDelete:(id:number)=>void
 }
 const TodoList:FC<ThingListProps> = ({todo,onStatusChange,onDelete}) =>{

@@ -7,14 +7,14 @@ import { todoList } from '../modeles/ToDoListType';
 
 type ThingsRowProps = {
    todo:todoList,
-   onCheck: (id: number) => void,
+   onCheck: (id: number, done:boolean) => void,
    onDelete: (id:number) => void
   } 
 
 const TodoRow:FC<ThingsRowProps> = ({todo, onDelete, onCheck}) => { 
   const { id, title, done } = todo;
   const onStatusChange = ()=>{
-    onCheck(id)
+    onCheck(id, !done)
   }
   const onDeleteClick= () =>{
     onDelete(id)
