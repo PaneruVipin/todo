@@ -2,14 +2,18 @@ import { useState } from "react";
 import { createStore, Reducer } from "redux";
 import { todoList } from "../modeles/ToDoListType";
 import { TODO_ADDED, TODO_DELETED, TODO_STATUS_CHANGE } from "./Actions";
+import { storeData, useStoreData } from "./Storage";
  
 export type State={
     todos:todoList[]
 }
-const initialState:State={
-    todos:[]
+const useTodo = useStoreData('todos') || []
+const initialState:State=useTodo || {
+  todos: []
 }
-let nextId=1
+const storeTodo=(data:State)=>{
+  return storeData('todos', data)
+}
 export const reducer: Reducer<State> = (state=initialState,action) => {
    switch(action.type){
      
@@ -22,18 +26,22 @@ export const reducer: Reducer<State> = (state=initialState,action) => {
              return t;
            } 
             )
-         
-            return{...state, todos:newTodos}
+            const todos={...state, todos:newTodos}
+            storeTodo(todos)
+            return todos
      }
      case TODO_ADDED:{
        const newTodo:todoList=action.payload
        const todo:todoList={id:newTodo.id, title:newTodo.title, done:newTodo.done}
-       nextId++
-       return {...state, todos:[...state.todos,todo ]}
+       const todos={...state, todos:[...state.todos,todo ]}
+       storeTodo(todos)
+       return todos
      }
      case TODO_DELETED:{
        const newTodos=state.todos.filter(t=>t.id!==action.payload)
-       return {...state, todos:newTodos}
+       const todos={...state, todos:newTodos}
+       storeTodo(todos)
+       return todos
      }
      default:{
          return state;

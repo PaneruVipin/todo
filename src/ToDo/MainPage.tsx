@@ -21,10 +21,15 @@ const MainPage:FC<MainPageProps> = ({onSaveClick}) =>{
     }
     const handelCancelClick=()=>{
         setToggleAction(!toggleAction)
+        setInputValue('')
     }
     const handleSaveClick=()=>{
+        if(!inputValue){
+            return
+        }else{
         onSaveClick(inputValue)
         setInputValue('')
+        }
     }
     const HandleChange=(event:ChangeEvent<HTMLInputElement>)=>{
         setInputValue(event.target.value)
