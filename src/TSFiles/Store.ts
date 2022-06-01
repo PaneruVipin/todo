@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { createStore, Reducer } from "redux";
 import { todoList } from "../modeles/ToDoListType";
 import { TODO_ADDED, TODO_DELETED, TODO_STATUS_CHANGE } from "./Actions";
@@ -50,4 +50,7 @@ export const reducer: Reducer<State> = (state=initialState,action) => {
     
 }
 
-export const store=createStore(reducer)
+export const store=createStore(
+  reducer,
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  )
