@@ -26,7 +26,8 @@ export const reducer: Reducer<State> = (state=initialState,action) => {
             return{...state, todos:newTodos}
      }
      case TODO_ADDED:{
-       const todo:todoList={id:nextId, title:action.payload, done:false}
+       const newTodo:todoList=action.payload
+       const todo:todoList={id:newTodo.id, title:newTodo.title, done:newTodo.done}
        nextId++
        return {...state, todos:[...state.todos,todo ]}
      }

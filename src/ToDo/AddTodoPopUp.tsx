@@ -1,7 +1,9 @@
 import {ChangeEvent, FC} from 'react'
 import H2 from '../Headings/H2';
 import Button from './Button';
+import Form from './Form';
 import Input from './Input';
+import Label from './Label';
 
 type AddTodoPopUpProps={
     saveClick:()=>void,
@@ -12,16 +14,16 @@ type AddTodoPopUpProps={
 
 const AddTodoPopUp:FC<AddTodoPopUpProps> = ({cancelClick,saveClick, inputValue,onChange}) =>{
     return(
-        <div className='border border-gray-200 rounded-md shadow-md space-y-4 pl-6 py-4'>
-            <H2>Create a todo</H2>
+             <Form submit={saveClick} className='border border-gray-200 rounded-md shadow-md space-y-4 pl-6 py-4'>
+            <Label htmlFor='todo_Input'>Create a todo</Label>
             <div className='w-2/5'>
-            <Input  value={inputValue} onChange={onChange}/>
+            <Input id='todo_Input' value={inputValue} onChange={onChange}/>
             </div>
             <div className='flex gap-x-4 '>
-            <Button onClick={saveClick}>Save</Button>
-            <Button onClick={cancelClick} theme='secondry'>Cancel</Button>
+            <Button type='submit'>Save</Button>
+            <Button type='button' onClick={cancelClick} theme='secondry'>Cancel</Button>
             </div>
-        </div>
+            </Form>
     )
 }
 
