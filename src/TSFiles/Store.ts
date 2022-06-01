@@ -7,9 +7,12 @@ import { storeData, useStoreData } from "./Storage";
 export type State={
     todos:todoList[]
 }
-const useTodo = useStoreData('todos') || []
-const initialState:State=useTodo || {
-  todos: []
+const useTodo = useStoreData('todos')
+const initialState:State= useTodo || {
+  todos: [
+    {title:'example things todo', id:'example things todo', done:false},
+    {title:'example things done', id:'example things done', done:true}
+  ]
 }
 const storeTodo=(data:State)=>{
   return storeData('todos', data)
