@@ -11,10 +11,10 @@ export type State={
 }
 const useTodo = useStoreData('todos')
 const initialState:State= useTodo || {
-  todos: [
-    //{title:'example things todo', id:'example things todo', done:false},
-    //{title:'example things done', id:'example things done', done:true}
-  ]
+  todos: {
+   1: {title:'example tings todo', id:1 , done:false},
+   2: {title:'example tings todo', id:2 , done:true}
+  }
 }
 const storeTodo=(data:State)=>{
   return storeData('todos', data)
