@@ -13,7 +13,7 @@ const useTodo = useStoreData('todos')
 const initialState:State= useTodo || {
   todos: {
    1: {title:'example tings todo', id:1 , done:false},
-   2: {title:'example tings todo', id:2 , done:true}
+   2: {title:'example tings done', id:2 , done:true}
   }
 }
 const storeTodo=(data:State)=>{
