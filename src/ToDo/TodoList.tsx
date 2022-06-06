@@ -1,13 +1,13 @@
 import {ChangeEventHandler, FC} from 'react'
 import { connect } from 'react-redux'
-import { todoList } from '../modeles/ToDoListType'
-import { todoDeletedActionCreator, todoStatusChangeActionCreator, TODO_STATUS_CHANGE } from '../TSFiles/Actions'
-import { completeTodoSelector, incompleteTodoSelector } from '../TSFiles/Selector'
+import { todo } from '../modeles/todos'
+import { todoDeletedActionCreator, todoStatusChangeActionCreator, TODO_STATUS_CHANGE } from '../TSFiles/Actions/todos'
+import { completeTodoSelector, incompleteTodoSelector } from '../TSFiles/Selectors/todos'
 import { State } from '../TSFiles/Store' 
 import TodoRow from './TodoRow'
 
 type ThingListProps={
-    todo:todoList[],
+    todo:todo[],
     onStatusChange:(id:number, done:boolean)=>void,
     onDelete:(id:number)=>void
 }

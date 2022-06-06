@@ -1,5 +1,5 @@
 
-import { State } from "./Store";
+import { State } from "../Store";
 export const completeTodoSelector =(s:State) =>Object.keys(s.todos)
 .map(todoId=>s.todos[todoId as any])
 .filter(t => t.done)

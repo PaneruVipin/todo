@@ -1,12 +1,12 @@
 
 import { createStore, Reducer } from "redux";
-import { todoList } from "../modeles/ToDoListType";
-import { TODO_ADDED, TODO_DELETED, TODO_STATUS_CHANGE } from "./Actions";
+import { todo } from "../modeles/todos";
+import { TODO_ADDED, TODO_DELETED, TODO_STATUS_CHANGE } from "./Actions/todos";
 import { storeData, useStoreData } from "./Storage";
  
 export type State={
     todos:{
-      [id:number]:todoList
+      [id:number]:todo
     }
 }
 const useTodo = useStoreData('todos')
@@ -37,8 +37,8 @@ export const reducer: Reducer<State> = (state=initialState,action) => {
             return todos
      }
      case TODO_ADDED:{
-       const newTodo:todoList=action.payload
-       const todo:todoList={id:newTodo.id, title:newTodo.title, done:newTodo.done}
+       const newTodo:todo=action.payload
+       const todo:todo={id:newTodo.id, title:newTodo.title, done:newTodo.done}
        const todos={...state, todos:{
          ...state.todos, [newTodo.id]:todo
        }}                          

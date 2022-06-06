@@ -2,7 +2,7 @@ import {ChangeEvent, ChangeEventHandler, EventHandler, FC, useState} from 'react
 import { connect } from 'react-redux';
 import H1 from '../Headings/H1';
 import H3 from '../Headings/H3';
-import { todoAddedActionCreator } from '../TSFiles/Actions';
+import { todoAddedActionCreator } from '../TSFiles/Actions/todos';
 import AddTodoPopUp from './AddTodoPopUp';
 import Button from './Button';
 import TodoHeader from './TodoHeader';

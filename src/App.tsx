@@ -1,10 +1,9 @@
 import { FC, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { todoList } from './modeles/ToDoListType'
+import { todo } from './modeles/todos'
 import { ReduxMainPage } from './ToDo/MainPage'
 
 const App:FC = () => {
-const todos:todoList[]=[
+const todos:todo[]=[
   
 ]
   return (

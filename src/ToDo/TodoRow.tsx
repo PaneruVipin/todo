@@ -2,11 +2,11 @@ import { ChangeEventHandler, FC } from 'react';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import Input from './Input';
 import cn from 'classnames';
-import { todoList } from '../modeles/ToDoListType';
+import { todo } from '../modeles/todos';
  
 
 type ThingsRowProps = {
-   todo:todoList,
+   todo:todo,
    onCheck: (id: number, done:boolean) => void,
    onDelete: (id:number) => void
   } 
