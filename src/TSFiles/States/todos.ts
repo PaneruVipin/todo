@@ -12,7 +12,10 @@ const storeTodo=(data:TodoState)=>{
     return storeData('todos', data)
   }
 
-export const initialTodoState={}
+export const initialTodoState={
+  1: {title:'example tings todo', id:1 , done:false},
+  2: {title:'example tings done', id:2 , done:true}
+}
 
 export const TodoReducer:Reducer<TodoState>=(state=initialTodoState, action)=>{
     switch(action.type){
