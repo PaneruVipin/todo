@@ -12,9 +12,9 @@ type ThingListProps={
     onDelete:(id:number)=>void
 }
 const TodoList:FC<ThingListProps> = ({todo,onStatusChange,onDelete}) =>{
-   
+    console.log('todo', todo)
     return(
-        <div>
+       <div>
             {
                todo.map((e)=><TodoRow todo={e}  key={e.id} onDelete={onDelete} onCheck={onStatusChange}/>) 
             }

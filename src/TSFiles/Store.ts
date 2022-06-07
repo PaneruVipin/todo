@@ -2,25 +2,33 @@
 import { createStore, Reducer } from "redux";
 import { todo } from "../modeles/todos";
 import { TODO_ADDED, TODO_DELETED, TODO_STATUS_CHANGE } from "./Actions/todos";
+import { initialTodoState, TodoReducer, TodoState } from "./States/todos";
 import { storeData, useStoreData } from "./Storage";
  
 export type State={
-    todos:{
-      [id:number]:todo
-    }
+    todos:TodoState
 }
 const useTodo = useStoreData('todos')
-const initialState:State= useTodo || {
-  todos: {
-   1: {title:'example tings todo', id:1 , done:false},
-   2: {title:'example tings done', id:2 , done:true}
+const initialState:State= {
+  todos: initialTodoState
+  /* 1: {title:'example tings todo', id:1 , done:false},
+   2: {title:'example tings done', id:2 , done:true}*/
+  
+}
+
+export const reducer: Reducer<State> = (state=initialState, action) => {
+ return {
+   todos:TodoReducer(state.todos, action)
   }
 }
-const storeTodo=(data:State)=>{
-  return storeData('todos', data)
-}
-export const reducer: Reducer<State> = (state=initialState,action) => {
-   switch(action.type){
+
+export const store=createStore(
+  reducer,
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  )
+
+
+  /**  switch(action.type){
      
      case  TODO_STATUS_CHANGE:{
            const {id, done}=action.payload
@@ -56,10 +64,4 @@ export const reducer: Reducer<State> = (state=initialState,action) => {
          return state;
      }
    }
-    
-}
-
-export const store=createStore(
-  reducer,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-  )
+     */
