@@ -12,7 +12,6 @@ type ThingListProps={
     onDelete:(id:number)=>void
 }
 const TodoList:FC<ThingListProps> = ({todo,onStatusChange,onDelete}) =>{
-    console.log('todo', todo)
     return(
        <div>
             {
