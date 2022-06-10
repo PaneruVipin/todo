@@ -8,7 +8,7 @@ export type TodoState={
        [id:number]:todo
 }
 
-const storeTodo=(data:TodoState)=>{
+const storeTodos=(data:TodoState)=>{
     return storeData('todos', data)
   }
 
@@ -27,7 +27,7 @@ export const TodoReducer:Reducer<TodoState>=(state=initialTodoState, action)=>{
                      done
                    }
                }
-               storeTodo(todos)
+               storeTodos(todos)
                return todos
         }
         case TODO_ADDED:{
@@ -36,14 +36,14 @@ export const TodoReducer:Reducer<TodoState>=(state=initialTodoState, action)=>{
           const todos={
             ...state, [newTodo.id]:todo
           }                          
-          storeTodo(todos)
+          storeTodos(todos)
           return todos
         }
         case TODO_DELETED:{
             const id = action.payload
            delete state[id]   
            const todos={...state}                                 
-          storeTodo(todos)
+          storeTodos(todos)
           return todos
         }
         default:{

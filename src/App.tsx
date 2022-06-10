@@ -1,13 +1,9 @@
 import { FC, useState } from 'react'
-import { todo } from './modeles/todos'
-import { ReduxMainPage } from './ToDo/MainPage'
+import Path from './Path'
 
 const App:FC = () => {
-const todos:todo[]=[
-  
-]
   return (
-    <ReduxMainPage/>
+   <Path></Path>
   )
 }
 

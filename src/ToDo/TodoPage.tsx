@@ -1,18 +1,18 @@
 import {ChangeEvent, ChangeEventHandler, EventHandler, FC, useState} from 'react'
 import { connect } from 'react-redux';
-import H1 from '../Headings/H1';
-import H3 from '../Headings/H3';
+import H1 from '../Components/Headings/H1';
+import H3 from '../Components/Headings/H3';
 import { todoAddedActionCreator } from '../TSFiles/Actions/todos';
 import AddTodoPopUp from './AddTodoPopUp';
-import Button from './Button';
-import TodoHeader from './TodoHeader';
+import Button from '../Components/Button';
+import TodoHeader from '../AppHeader';
 import { CompletedTodoList, IncompletedTodoList } from './TodoList';
 
-type MainPageProps={
+type TodoPageProps={
     onSaveClick:(title:string)=>void
 }
 
-const MainPage:FC<MainPageProps> = ({onSaveClick}) =>{
+const TodoPage:FC<TodoPageProps> = ({onSaveClick}) =>{
 
     const [toggleAction,setToggleAction] = useState(false)
     const [inputValue, setInputValue]= useState('')
@@ -35,9 +35,8 @@ const MainPage:FC<MainPageProps> = ({onSaveClick}) =>{
         setInputValue(event.target.value)
     }
     return(
-        <div className='bg-white'>
-           <TodoHeader/>
-            <div className='pl-6 pr-10 pt-4 space-y-3'>
+        
+            <div className='pl-6 pr-10 pt-4 space-y-3 bg-white'>
                 <H1>Things to get done</H1>
                <H3>Thing to do</H3>
                 <IncompletedTodoList/>
@@ -50,14 +49,13 @@ const MainPage:FC<MainPageProps> = ({onSaveClick}) =>{
               <H3>Thing done</H3>
                 <CompletedTodoList/>
             </div>
-        </div>
     )
 }
 
-export default MainPage;
+export default TodoPage;
 
 const dispatchMapper={
     onSaveClick:todoAddedActionCreator
 }
 
-export const ReduxMainPage= connect(undefined,dispatchMapper)(MainPage)
+export const ReduxTodoPage= connect(undefined,dispatchMapper)(TodoPage)

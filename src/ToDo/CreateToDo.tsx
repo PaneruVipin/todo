@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
-import Button from './Button';
-import Input from './Input';
+import Button from '../Components/Button';
+import Input from '../Components/Input';
 
 type CreateToDoProps = {
 onSave:(inputValue:string) => void,

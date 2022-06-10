@@ -1,9 +1,9 @@
 import {ChangeEvent, FC} from 'react'
-import H2 from '../Headings/H2';
-import Button from './Button';
-import Form from './Form';
-import Input from './Input';
-import Label from './Label';
+import H2 from '../Components/Headings/H2';
+import Button from '../Components/Button';
+import Form from '../Components/Form';
+import Input from '../Components/Input';
+import Label from '../Components/Label';
 
 type AddTodoPopUpProps={
     saveClick:()=>void,

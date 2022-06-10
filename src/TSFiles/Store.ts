@@ -1,25 +1,32 @@
 
-import { createStore, Reducer } from "redux";
+import { applyMiddleware, createStore, Reducer } from "redux";
+import { rootSaga, sagaMiddleware } from "../Sagas";
 import { initialTodoState, TodoReducer, TodoState } from "./States/todos";
+import { initialUserState, UserReducer, UserState } from "./States/users";
 import { storeData, useStoreData } from "./Storage";
  
 export type State={
     todos:TodoState
+    users:UserState
 }
 const useTodo = useStoreData('todos')
 const initialState:State= {
-  todos:useStoreData('todos') || initialTodoState 
-  
+  todos:useStoreData('todos') || initialTodoState ,
+  users:initialUserState
 }
 
 export const reducer: Reducer<State> = (state=initialState, action) => {
  return {
-   todos:TodoReducer(state.todos, action)
+   todos:TodoReducer(state.todos, action),
+   users:UserReducer(state.users, action)
   }
 }
 
 export const store=createStore(
   reducer,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(
+    sagaMiddleware
   )
+  )
+  sagaMiddleware.run(rootSaga)
 

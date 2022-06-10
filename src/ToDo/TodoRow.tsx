@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FC } from 'react';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import Input from './Input';
+import Input from '../Components/Input';
 import cn from 'classnames';
 import { todo } from '../modeles/todos';
  

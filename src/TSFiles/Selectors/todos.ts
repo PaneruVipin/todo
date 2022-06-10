@@ -14,4 +14,3 @@ todoList.filter(t=>t.done)
 export const incompleteTodoSelector =createSelector(todoListSelector, (todoList)=>
 todoList.filter(t=>!t.done)
 )
-
